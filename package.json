@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "nodemon src"
   },
   "repository": {
@@ -20,13 +20,35 @@
   "homepage": "https://github.com/Youngestdev/backoffice-api#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "chai-http": "^4.2.1",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-jwt": "^5.3.1",
     "helmet": "^3.16.0",
+    "husky": "^1.3.1",
     "jwks-rsa": "^1.4.0",
+    "lint-staged": "^8.1.5",
     "mongodb": "^3.2.2",
     "mongodb-memory-server": "^4.2.1",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "prettier": "^1.16.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2"
   }
 }
